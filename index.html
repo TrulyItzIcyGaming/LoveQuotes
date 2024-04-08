@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Quote</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: rgb(255, 111, 111);
+        color: white;
+    }
+    #quote-container {
+        margin-top: 50px;
+    }
+    #quote {
+        font-size: 20px;
+        font-style: italic;
+        width: 80%;
+        position: relative;
+        left: 10%;
+        background-color: rgb(255, 111, 111);
+        padding: 25px;
+        border-radius: 25px;
+        border: 5px solid white;
+    }
+</style>
+</head>
+<body>
+<h1>Daily Quote</h1>
+<div id="quote-container">
+    <p id="quote"></p>
+</div>
+
+<script>
+    // Array of quotes
+    const quotes = [
+    "No matter what you do, I'll still be there for you, And when you call my name, I won't be far away, No matter where you go, You'll never be alone",
+    "When I'm around you, I feel it in my veins, There's something about you that's makin' me go insane, We have a storm to weather, my little sweet surrender",
+    "My last made me feel like I would never try again, But when I saw you, I felt something I never felt, Come closer, I'll give you all my love, If you treat me right, baby, I'll give you everything",
+    "We all need that someone, Who gets you like no one else, Right when you need it the most, We all need a soul to rely on, A shoulder to cry on, A friend through the highs and the lows",
+    "Then I saw your face, your forgiving eyes, Looking back at me from the other side, Like you understood me, And I'm never letting you go, oh",
+    "You got those pretty eyes in your head, you know it, You got me dancing in my bed so let me show it, You are exactly what I want, kinda cool and kinda not, Wanna give myself to you",
+    "You are my heart, my life, my one and only thought.",
+    "Thinking of you keeps me awake. Dreaming of you keeps me asleep. Being with you keeps me alive.",
+    "Loved you yesterday, love you still, always have, always will.",
+    "Love takes off the masks we fear we cannot live without and know we cannot live within.",
+    "We loved with a love that was more than love.",
+    "Love isn’t something you find. Love is something that finds you.",
+    "The practice of love offers no place of safety. We risk loss, hurt, pain. We risk being acted upon by forces outside our control.",
+    "Love is that condition in which the happiness of another person is essential to your own.",
+    "Love is like the wind, you can't see it but you can feel it.",
+    "To love is to recognize yourself in another.",
+    "There is always some madness in love. But there is also always some reason in madness.",
+    "Passion makes the world go 'round. Love just makes it a safer place.",
+    "When you find that one that's right for you, you feel like they were put there for you, you never want to be apart.",
+    "When you're lucky enough to meet your one person, then life takes a turn for the best. It can't get better than that.",
+    "You know it's love when all you want is that person to be happy, even if you're not part of their happiness.",
+    "Love has nothing to do with what you are expecting to get — only with what you are expecting to give — which is everything.",
+    "Where there is great love, there are always miracles.",
+    "In real love, you want the other person's good. In romantic love, you want the other person.",
+    "Lots of people want to ride with you in the limo, but what you want is someone who will take the bus with you when the limo breaks down.",
+    "I love you not only for what you are, but for what I am when I am with you.",
+    "When you are missing someone, time seems to move slower, and when I'm falling in love with someone, time seems to be moving faster.",
+    "You found parts of me I didn't know existed and in you I found a love I no longer believed was real.",
+    "Love makes your soul crawl out from its hiding place.",
+    "I swear I couldn't love you more than I do right now, and yet I know I will tomorrow.",
+    "Love does not dominate; it cultivates.",
+    "The only thing we never get enough of is love; and the only thing we never give enough of is love.",
+    "It is a curious thought, but it is only when you see people looking ridiculous that you realize just how much you love them.",
+    "Love is the whole thing. We are only pieces.",
+    "True love comes quietly, without banners or flashing lights. If you hear bells, get your ears checked.",
+    "To love and be loved is to feel the sun from both sides.",
+    "Life is the flower for which love is the honey.",
+    "Being deeply loved by someone gives you strength, while loving someone deeply gives you courage.",
+    "All that you are is all that I’ll ever need.",
+    "I love her, and that’s the beginning and end of everything.",
+    "Love recognizes no barriers.",
+    "Love is composed of a single soul inhabiting two bodies.",
+    "We are most alive when we're in love.",
+    "There is no charm equal to tenderness of heart.",
+    "The heart has its reasons of which reason knows nothing.",
+    "Love is friendship that has caught fire.",
+    "You can't blame gravity for falling in love.",
+    "If you find someone you love in your life, then hang on to that love.",
+    "I think I'd miss you even if we never met.",
+    "I fell in love the way you fall asleep: slowly, and then all at once.",
+    "A simple I love you means more than money.",
+    "Everything I do, I do it for you.",
+    "You don't marry someone you can live with — you marry someone you cannot live without.",
+    "I want all of you, forever, you and me, every day.",
+    "To me, you are perfect.",
+    "If you live to be a hundred, I want to live to be a hundred minus one day, so I never have to live without you.",
+    "True love stories never have endings.",
+    "There's nothing that I wouldn't do to make you feel my love.",
+    "Love is something sent from heaven to worry the hell out of you.",
+    "To be brave is to love someone unconditionally, without expecting anything in return.",
+    "You know you're in love when you can't fall asleep because the reality is finally better than your dreams.",
+    "The best thing to hold onto in life is each other.",
+    "You should be kissed and often, and by someone who knows how.",
+    "That's why they call them crushes. If they were easy, they'd call them something else.",
+    "I like you very much. Just as you are.",
+    "Personally, I love a great love story.",
+    "Love is the flower; you've got to let it grow.",
+    "Maybe I don’t know that much but I know this much is true, I was blessed because I was loved by you.",
+    "When you realize you want to spend the rest of your life with somebody, you want the rest of your life to start as soon as possible.",
+    "Love loves to love love.",
+    "Nobody has ever measured, not even poets, how much the heart can hold.",
+    "Love is an endless act of forgiveness.",
+    "All you need is love.",
+    "Love was made for me and you.",
+    "I’d never lived before your love.",
+    "At the touch of love everyone becomes a poet.",
+    "In all the world, there is no love for you like mine.",
+    "I wanted it to be you. I wanted it to be you so badly.",
+    "You had me at hello.",
+    "When we love, we always strive to become better than we are. When we strive to become better than we are, everything around us becomes better too.",
+    "To feel the love of people whom we love is a fire that feeds our life.",
+    "When you love someone, you love the person as they are, and not as you'd like them to be.",
+    "When I saw you I fell in love, and you smiled because you knew.",
+    "The greatest thing you'll ever learn is to love and be loved in return.",
+    "You are my sun, my moon and all my stars.",
+    "You don't love someone because they're perfect, you love them in spite of the fact that they're not.",
+    "Whatever our souls are made of, his and mine are the same.",
+    "Oh, how a quiet love can drown out every fear.",
+    "I’ve tried so many times to think of a new way to say it, and it’s still I love you.",
+    "If I had a flower for every time I thought of you... I could walk through my garden forever.",
+    "We love the things we love for what they are.",
+    "There is never a time or place for true love. It happens accidentally, in a heartbeat, in a single flashing, throbbing moment.",
+    
+    ];
+
+    // Function to select a random quote
+    function getRandomQuote() {
+        return quotes[Math.floor(Math.random() * quotes.length)];
+    }
+
+    // Function to display the quote
+    function displayQuote() {
+        const quoteElement = document.getElementById('quote');
+        const randomQuote = getRandomQuote();
+        quoteElement.textContent = randomQuote;
+    }
+
+    // Display a random quote every 15 seconds
+    setInterval(displayQuote, 15000); // 15 seconds in milliseconds
+
+    // Display a random quote on page load
+    window.onload = displayQuote;
+</script>
+</body>
+</html>
+        
