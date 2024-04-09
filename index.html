@@ -34,7 +34,6 @@
 </div>
 
 <script>
-    // Array of quotes
     const quotes = [
     "No matter what you do, I'll still be there for you, And when you call my name, I won't be far away, No matter where you go, You'll never be alone",
     "When I'm around you, I feel it in my veins, There's something about you that's makin' me go insane, We have a storm to weather, my little sweet surrender",
@@ -128,25 +127,21 @@
     "If I had a flower for every time I thought of you... I could walk through my garden forever.",
     "We love the things we love for what they are.",
     "There is never a time or place for true love. It happens accidentally, in a heartbeat, in a single flashing, throbbing moment.",
-    
+    "Something Stupied",
     ];
 
-    // Function to select a random quote
     function getRandomQuote() {
         return quotes[Math.floor(Math.random() * quotes.length)];
     }
 
-    // Function to display the quote
     function displayQuote() {
         const quoteElement = document.getElementById('quote');
         const randomQuote = getRandomQuote();
         quoteElement.textContent = randomQuote;
     }
 
-    // Display a random quote every 15 seconds
-    setInterval(displayQuote, 15000); // 15 seconds in milliseconds
+    setInterval(displayQuote, 15000);
 
-    // Display a random quote on page load
     window.onload = displayQuote;
 </script>
 </body>
